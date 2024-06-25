@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile-wp
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: aegon
+      WORDPRESS_DB_PASSWORD: H@ilhydra1
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - mysql
+
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: H@ilhydra1
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: Aegon
+      MYSQL_PASSWORD: H@ilhydra123
+
+  openresty:
+    build:
+      context: .
+      dockerfile: Dockerfile-openresty
+    ports:
+      - "80:80"
+      - "443:443"

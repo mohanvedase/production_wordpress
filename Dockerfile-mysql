@@ -1,0 +1,10 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=H@ilhydra1
+ENV MYSQL_DATABASE=wordpress
+ENV MYSQL_USER=Aegon
+ENV MYSQL_PASSWORD=H@ilhydra123
+
+EXPOSE 3306
+
+CMD ["mysqld"]
